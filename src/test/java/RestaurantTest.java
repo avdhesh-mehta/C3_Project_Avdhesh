@@ -24,7 +24,7 @@ class RestaurantTest {
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE
     @Test
     public void is_restaurant_open_should_return_true_if_time_is_between_opening_and_closing_time(){
-        LocalTime currentTime = LocalTime.parse("11:00:00");
+        LocalTime currentTime = LocalTime.parse("10:30:00");
         Restaurant restaurantSpied = Mockito.spy(restaurant);
         Mockito.when(restaurantSpied.getCurrentTime()).thenReturn(currentTime);
         assertTrue(restaurantSpied.isRestaurantOpen());
@@ -48,6 +48,13 @@ class RestaurantTest {
     @Test
     public void adding_item_to_menu_should_increase_menu_size_by_1(){
         int initialMenuSize = restaurant.getMenu().size();
+
+        int currPrice = 0;
+        for(Item item: restaurant.getMenu()) {
+            currPrice = currPrice + item.getPrice();
+        }
+        System.out.println(currPrice);
+
         restaurant.addToMenu("Sizzling brownie",319);
         assertEquals(initialMenuSize+1,restaurant.getMenu().size());
     }

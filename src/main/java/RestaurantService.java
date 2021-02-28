@@ -4,6 +4,7 @@ import java.util.List;
 
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
+    private Item item;
 
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException{
         for (Restaurant restaurant : restaurants) {
